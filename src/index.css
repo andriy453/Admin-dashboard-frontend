@@ -1,10 +1,50 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+
+:root{
+  --grean:#59B17A;
+  --grean-hover:#A5C0B8;
+  --black:#121417;
+  --modal-beckdrop:#12141733;
+  --white:#FCFCFC;
+  --background: #F8F8F8;
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Inter-Regular.ttf') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Inter-Regular.ttf') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/Inter-SemiBold.ttf') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Inter-Bold.ttf') format('woff2');
+}
+
 body {
-  background-color: #000;
-  /* background-image: url('./assets/background.png'); */
   background-size: auto 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #111111;
@@ -19,7 +59,7 @@ h4,
 h5,
 h6,
 p {
-  margin-top: 0;
+  margin: 0;
 }
 a {
   text-decoration: none;
