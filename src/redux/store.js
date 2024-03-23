@@ -11,7 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist/es/constants";
-// import { listsReducer } from "./lists/listSlice";
+import { listsReducer } from "./lists/listSlice";
 
 
 const authPersistConfig = {
@@ -21,7 +21,7 @@ const authPersistConfig = {
 };
 const rootReducer = {
   auth: persistReducer(authPersistConfig, authReducer),
-  // lists: listsReducer,
+  lists: listsReducer,
 };
 
 export const store = configureStore({
