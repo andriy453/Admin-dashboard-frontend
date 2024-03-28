@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTable } from "react-table/dist/react-table.development";
+import { nanoid } from "nanoid";
 import {
   IconWrapper,
   NameColumn,
@@ -142,9 +143,9 @@ export const OrdersTable = ({ data }) => {
         <Table {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column, index) => (
-                  <Th {...column.getHeaderProps()}>
+              <tr key={nanoid()} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <Th key={nanoid()} {...column.getHeaderProps()}>
                     <IconWrapper>{column.render("Header")}</IconWrapper>
                   </Th>
                 ))}
@@ -155,9 +156,9 @@ export const OrdersTable = ({ data }) => {
             {rows.map((row) => {
               prepareRow(row);
               return (
-                <Tr {...row.getRowProps()}>
-                  {row.cells.map((cell, index) => (
-                    <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
+                <Tr key={nanoid()} {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <Td  key={nanoid()} {...cell.getCellProps()}>{cell.render("Cell")}</Td>
                   ))}
                 </Tr>
               );

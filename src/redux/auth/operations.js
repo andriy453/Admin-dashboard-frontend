@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
+axios.defaults.baseURL = 'https://admin-dashboard-backend-ad0z.onrender.com';
 
 const showToast = (errorCode) => {
   let errorMessage = 'An unexpected error occurred. Please try again.';
@@ -95,16 +96,17 @@ export const currentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
     const accessToken = localStorage.getItem('accessToken');
-
+console.log(accessToken)
     if (!accessToken) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
       setToken(accessToken);
-      const { data } = await instance.get('user/user-info');
+      const { data } = await instance.get('api/users/user-info');
 
       return data;
     } catch (error) {
+ 
       return thunkAPI.rejectWithValue(error.message);
     }
   }

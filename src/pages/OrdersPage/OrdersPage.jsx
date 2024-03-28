@@ -18,11 +18,11 @@ import sprite from "../../assets/sprite.svg";
 
 const PaginationDot = ({ onClick, isActive }) => (
   <SvgDot onClick={onClick}>
-    <use href={sprite + "#icon-dot"}></use>
+    <use href={sprite + "#"}></use>
   </SvgDot>
 );
 
-export const Orders = () => {
+export const OrdersPage = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector(selectIsLoggedIn);
   const [filterValue, setFilterValue] = useState("");

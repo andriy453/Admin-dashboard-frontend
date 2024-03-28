@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { selectIsLoggedIn } from "../redux/Auth/selectors";
+import { selectIsLoggedIn } from "../redux/auth/authSelectors";
 import { useSelector } from 'react-redux';
 
 const PublicRoute = ({ component: Component, redirectTo }) => {

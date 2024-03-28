@@ -1,4 +1,4 @@
-import { Container, Title, Picture, Img,Wrapperimg } from './FirstPage.styled';
+import { Container, Title, Picture, Img,Wrapperimg } from './LoginPage.styled';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import tabletsMobile1x from '../../assets/tablets-mobile1x.png';
 import tabletsMobile2x from '../../assets/tablets-tablet2x.png';
@@ -6,7 +6,7 @@ import tabletsTablet1x from '../../assets/tablets-tablet1x.png';
 import tabletsTablet2x from '../../assets/tablets-tablet2x.png';
 import tabletsDesktop1x from '../../assets/tablets-desktop1x.png';
 import tabletDesktop2x from '../../assets/tablets-desktop2x.png';
-const FirstPage = () => {
+const LoginPage = () => {
   return (
     <Container>
             <LoginForm />
@@ -41,4 +41,4 @@ const FirstPage = () => {
   );
 };
 
-export default FirstPage;
+export default LoginPage;

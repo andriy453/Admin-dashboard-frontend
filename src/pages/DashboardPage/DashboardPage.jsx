@@ -10,12 +10,12 @@ import {
   suppliersLength,
 } from "../../redux/lists/listsSelector";
 import { dashboardGet } from "../../redux/lists/operations";
-import { IncomeExpences } from "../IncomeExpences/IncomeExpences";
-import { RecentCustomers } from "../RecentCustomers/RecentCustomers";
-import { Statistics } from "../Statistics/Statistics";
-import { WrapDashboards, WrapTable } from "./Dashboards.styled";
+import { IncomeExpences } from "../../components/IncomeExpences/IncomeExpences";
+import { RecentCustomers } from "../../components/RecentCustomers/RecentCustomers";
+import { Statistics } from "../../components/Statistics/Statistics";
+import { WrapDashboards, WrapTable } from "./DashboardPage.styled";
 
-function Dashboards() {
+function DashboardPage() {
   const dispatch = useDispatch();
   const loggedIn = useSelector(selectIsLoggedIn);
 
@@ -49,4 +49,4 @@ function Dashboards() {
   );
 }
 
-export default Dashboards;
+export default DashboardPage;

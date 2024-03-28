@@ -51,17 +51,12 @@ export const Picture = styled.picture`
   width: 95px;
   height: 93px;
   position: absolute;
-  right: -20px;
-  top: -60px;
+  top: -30%;
+  right: 0;
   @media screen and (min-width: 768px) {
     width: 179px;
     height: 175px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 179px;
-    height: 175px;
-    display: flex;
-    margin-bottom: 16px;
+    top: -40%;
   }
 `;
 
