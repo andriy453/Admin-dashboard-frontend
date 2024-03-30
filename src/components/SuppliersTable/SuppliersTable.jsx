@@ -1,13 +1,11 @@
-import { useMemo,useState } from "react";
+import { useMemo } from "react";
 import { useTable } from "react-table/dist/react-table.development";
-import { useDispatch } from 'react-redux';
 import sprite from "../../assets/sprite.svg";
 import { nanoid } from "nanoid";
 import {
-  BtnDelete,
   BtnEdit,
   IconWrapper,
-  SvgDelete,
+//   NameColumn,
   SvgEdit,
   Table,
   TableWrap,
@@ -15,43 +13,63 @@ import {
   Th,
   Title,
   Tr,
-} from "./ProductsTable.styled";
-import {productsIdDelete} from '../../redux/lists/operations'
-import Modal from "../Modal/Modal";
-import EditModal from "../Modal/EditModal/EditModal";
+} from "./SuppliersTable.stuled";
 
- const ProductsTable = ({ data }) => {
-  const dispatch = useDispatch();
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [idProduct, setIdProduct] = useState('');
-
-  const  hendleEditClick  =(id) =>{
-    setIsModalOpen(true) 
-    setIdProduct(id)
-  }
-
+export const SuppliersTable = ({ data }) => {
   const columnsRecommend = useMemo(
     () => [
       {
-        Header: "Product Info",
+        Header: "Suppliers Info",
         accessor: "name",
       },
       {
-        Header: "Category",
-        accessor: "category",
+        Header: "Address",
+        accessor: "address",
       },
       {
-        Header: "Stock",
-        accessor: "stock",
-      },
-      {
-        Header: "Suppliers",
+        Header: "Company",
         accessor: "suppliers",
       },
       {
-        Header: "Price",
-        accessor: "price",
+        Header: "Delivery date",
+        accessor: "date",
+      },
+      {
+        Header: "Ammount",
+        accessor: "amount",
+        Cell: ({ value }) => <span>{value.slice(1)}</span>,
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+        Cell: ({ value }) => (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: value === "Active" ? "#59B17A" : "#E85050",
+                borderRadius: "40px",
+                padding: "4px 25px",
+                fontSize: "14px",
+                background:
+                  value === "Active"
+                    ? "rgba(89, 177, 122, 0.10)"
+                    : "rgba(232, 80, 80, 0.10)",
+                minWidth: "109px",
+              }}
+            >
+              {value}
+            </span>
+          </div>
+        ),
       },
       {
         Header: "Action",
@@ -62,19 +80,14 @@ import EditModal from "../Modal/EditModal/EditModal";
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px",
             }}
           >
             <BtnEdit>
-              <SvgEdit onClick={()=>hendleEditClick(row.original._id) }>
+              <SvgEdit>
                 <use href={sprite + "#icon-pen"}></use>
               </SvgEdit>
+              Edit
             </BtnEdit>
-            <BtnDelete onClick={()=> dispatch(productsIdDelete(row.original._id))}>
-              <SvgDelete >
-                <use href={sprite + "#icon-trash-2-1"}></use>
-              </SvgDelete>
-            </BtnDelete>
           </div>
         ),
       },
@@ -88,13 +101,13 @@ import EditModal from "../Modal/EditModal/EditModal";
   return (
     <>
       <TableWrap>
-        <Title>All products</Title>
+        <Title>All suppliers</Title>
         <Table {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <tr key={nanoid()} {...headerGroup.getHeaderGroupProps()}>
+              <tr  key={nanoid()} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <Th key={nanoid()} {...column.getHeaderProps()}>
+                  <Th  key={nanoid()}{...column.getHeaderProps()}>
                     <IconWrapper>{column.render("Header")}</IconWrapper>
                   </Th>
                 ))}
@@ -107,7 +120,7 @@ import EditModal from "../Modal/EditModal/EditModal";
               return (
                 <Tr key={nanoid()} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <Td key={nanoid()} {...cell.getCellProps()}>{cell.render("Cell")}</Td>
+                    <Td key={nanoid()}  {...cell.getCellProps()}>{cell.render("Cell")}</Td>
                   ))}
                 </Tr>
               );
@@ -115,13 +128,6 @@ import EditModal from "../Modal/EditModal/EditModal";
           </tbody>
         </Table>
       </TableWrap>
-      {isModalOpen && (
-          <Modal onClose={()=>    setIsModalOpen(false)} isOpen={isModalOpen}>
-            <EditModal  onClose={()=>    setIsModalOpen(false)} id={idProduct}/>
-          </Modal>
-        )}
     </>
   );
 };
-
-export default ProductsTable;

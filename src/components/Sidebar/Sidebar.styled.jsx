@@ -14,7 +14,7 @@ export const StyledSidebar = styled.div`
   background: #f7f8fa;
   justify-content: space-between;
   border-right: 1px solid rgba(29, 30, 33, 0.1);
-  z-index: 100;
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
     width: 84px;
@@ -98,9 +98,9 @@ export const NavItem = styled(NavLink)`
   border-radius: 50%;
   cursor: pointer;
   transition: all 250ms linear;
-  &:hover > svg,
-  &:focus > svg,
-  &.active > svg {
+  &:hover svg ,
+  &:focus  svg,
+  &.active  svg {
     fill: rgba(89, 177, 122, 1);
     transition: all 250ms linear;
   }
@@ -114,6 +114,7 @@ export const SvgNav = styled.svg`
   width: 14px;
   height: 14px;
   fill: rgba(220, 221, 223, 1);
+
   @media screen and (min-width: 768px) {
     width: 16px;
     height: 16px;

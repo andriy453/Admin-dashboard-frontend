@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
-import { orders, page, totalPages } from "../../redux/lists/listsSelector";
-import { ordersGet } from "../../redux/lists/operations";
-import  OrdersTable  from "../../components/OrdersTable/OrdersTable";
+import {
+  customers,
+  page,
+  totalPages,
+} from "../../redux/lists/listsSelector";
+import { customerGet } from "../../redux/lists/operations";
+
 import {
   Button,
   FilterWrap,
@@ -12,37 +15,34 @@ import {
   Pagination,
   SvgDot,
   SvgFilter,
-  WrapOrders,
-} from "./OrdersPage.stuled";
+  WrapCustomers
+} from "./CustomersDataPage.stuled";
 import sprite from "../../assets/sprite.svg";
+
+import  CustomersData  from "../../components/CustomersData/CustomersData";
 
 const PaginationDot = ({ onClick, isActive }) => (
   <SvgDot onClick={onClick} $isActive={isActive}>
-
   </SvgDot>
 );
 
-export const OrdersPage = () => {
+ const CustomersDataPage = () => {
   const dispatch = useDispatch();
-  const loggedIn = useSelector(selectIsLoggedIn);
   const [filterValue, setFilterValue] = useState("");
 
   const handleFilterChange = (e) => {
     setFilterValue(e.target.value);
   };
-
   useEffect(() => {
+      dispatch(customerGet({ page: 1, name: "" }));
+  }, [dispatch]);
 
-      dispatch(ordersGet({ page: 1, name: "" }));
-    
-  }, [dispatch, loggedIn]);
-
-  const ordersList = useSelector(orders);
+  const customersList = useSelector(customers);
   const totalPageCount = useSelector(totalPages);
   const currentPage = useSelector(page);
 
   const handlePageChange = (newPage) => {
-    dispatch(ordersGet({ page: newPage, name: filterValue || "" }));
+    dispatch(customerGet({ page: newPage, name: filterValue || "" }));
   };
 
   const renderPaginationDots = () => {
@@ -59,11 +59,11 @@ export const OrdersPage = () => {
     return dots;
   };
   const handleFilterSubmit = () => {
-    dispatch(ordersGet({ page: 1, name: filterValue }));
+    dispatch(customerGet({ page: 1, name: filterValue }));
   };
   return (
     <>
-      <WrapOrders>
+      <WrapCustomers>
         <FilterWrap>
           <Input
             type="text"
@@ -78,9 +78,11 @@ export const OrdersPage = () => {
             Filter
           </Button>
         </FilterWrap>
-        <OrdersTable data={ordersList} />
+        <CustomersData data={customersList} />
         <Pagination>{renderPaginationDots()}</Pagination>
-      </WrapOrders>
+      </WrapCustomers>
     </>
   );
 };
+
+export default CustomersDataPage;

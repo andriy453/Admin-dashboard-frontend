@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WrapOrders = styled.div`
+export const WrapCustomers = styled.div`
   display: flex;
   padding: 40px 20px;
   background: #f7f8fa;

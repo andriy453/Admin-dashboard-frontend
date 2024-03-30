@@ -66,7 +66,7 @@ export const ordersGet = createAsyncThunk(
   "orders/all",
   async ({ page, name }, { rejectWithValue }) => {
     try {
-      const { data } = await instance.get(`/api//orders?page=${page}&name=${name}`);
+      const { data } = await instance.get(`/api/orders?page=${page}&name=${name}`);
 
       return data;
     } catch (error) {
@@ -94,11 +94,11 @@ export const productsAdd = createAsyncThunk(
   "products/add",
   async (body, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post(`products`, body);
+      const { data } = await instance.post(`/api/products`, body);
 
       return data;
     } catch (error) {
-      showToast(error.message, error.response?.status);
+      showToast(error, error.response?.status);
       return rejectWithValue(error.message);
     }
   }
@@ -120,9 +120,14 @@ export const productsIdGet = createAsyncThunk(
 
 export const productsIdEdit = createAsyncThunk(
   "products/edit",
-  async ({ productId, body }, { rejectWithValue }) => {
+  async ({id,name,stock,price,suppliers,category},   { rejectWithValue }) => {
     try {
-      const { data } = await instance.put(`/api/products/:${productId}`, body);
+      console.log(id)
+      const { data } = await instance.put(`/api/products/${id}`,{ id,  name: name,
+        stock: stock,
+        price: price,
+        suppliers: suppliers,
+        category: category,});
 
       return data;
     } catch (error) {
@@ -136,7 +141,7 @@ export const productsIdDelete = createAsyncThunk(
   "products/delete",
   async (productId, { rejectWithValue }) => {
     try {
-      const { data } = await instance.delete(`/api/products/:${productId}`);
+      const { data } = await instance.post(`/api/products/${productId}`);
 
       return data;
     } catch (error) {

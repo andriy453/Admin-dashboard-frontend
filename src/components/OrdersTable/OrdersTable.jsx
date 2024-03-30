@@ -12,7 +12,7 @@ import {
   Tr,
 } from "./OrdersTable.styled";
 
-export const OrdersTable = ({ data }) => {
+ const OrdersTable = ({ data }) => {
   const columnsRecommend = useMemo(
     () => [
       {
@@ -158,7 +158,7 @@ export const OrdersTable = ({ data }) => {
               return (
                 <Tr key={nanoid()} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <Td  key={nanoid()} {...cell.getCellProps()}>{cell.render("Cell")}</Td>
+                    <Td key={nanoid()} {...cell.getCellProps()}>{cell.render("Cell")}</Td>
                   ))}
                 </Tr>
               );
@@ -169,3 +169,5 @@ export const OrdersTable = ({ data }) => {
     </>
   );
 };
+
+export default OrdersTable;

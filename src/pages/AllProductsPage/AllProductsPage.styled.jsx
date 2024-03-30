@@ -14,20 +14,23 @@ export const WrapProducts = styled.div`
   }
 `;
 
-export const SvgDot = styled.svg`
+export const SvgDot = styled.div`
   width: 10px;
   height: 10px;
-  fill: rgba(231, 241, 237, 1);
+  background-color:${(props) => props.$isActive ?'rgba(89, 177, 122, 1)' :   '#ffffff'};
+  border-radius:50%;
 
-  & .active {
-    fill: rgba(89, 177, 122, 1);
+
+
+  &:hover,
+  &:focus,
+  &.active  {
+    background-color: rgba(89, 177, 122, 1);
     width: 12px;
     height: 12px;
   }
-
-  &:hover,
-  &:focus {
-    fill: rgba(89, 177, 122, 1);
+  &.active {
+    background-color: rgba(89, 177, 122, 1);
     width: 12px;
     height: 12px;
   }
@@ -71,9 +74,18 @@ export const Input = styled.input`
   &.active {
     border: 1px solid #59b17a;
   }
+  margin-bottom:18px;
+  width: 100%;
+    @media screen and (min-width: 768px) {
+        margin-bottom:0px;
+        width: none;
+    }
 `;
 
 export const Button = styled.button`
+display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
   padding: 13px 30px;
   border-radius: 60px;
   background: #59b17a;
@@ -94,6 +106,8 @@ export const Button = styled.button`
   &:focus {
     opacity: 0.4;
   }
+  }
+
 `;
 
 export const SvgFilter = styled.svg`
@@ -132,10 +146,13 @@ export const FilterWrap = styled.div`
 `;
 
 export const BtnWrap = styled.div`
+
+  margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+    }
   @media screen and (min-width: 1440px) {
     width: calc((100vw - 265px));
   }

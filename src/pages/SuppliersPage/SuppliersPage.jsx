@@ -1,37 +1,39 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { page, products, totalPages } from "../../redux/lists/listsSelector";
-import { productsGet } from "../../redux/lists/operations";
+import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
+import {
+  page,
+  suppliers,
+  totalPages,
+} from "../../redux/lists/listsSelector";
+import { suppliersGet } from "../../redux/lists/operations";
 
 import {
   BtnAdd,
   BtnWrap,
   Button,
-  DivPlus,
   FilterWrap,
   Input,
   Pagination,
-  SvgFilter,
   SvgDot,
-  SvgPlus,
-} from "./AllProductsPage.styled";
+  SvgFilter,
+  WrapSuppliers
+} from "./SuppliersPage.styled";
 import sprite from "../../assets/sprite.svg";
-import { WrapProducts } from "./AllProductsPage.styled";
-import  ProductsTable  from "../../components/ProductsTable/ProductsTable";
-import  Modal  from "../../components/Modal/Modal";
-import AddNewProduct from "../../components/Modal/AddNewProduct/AddNewProduct";
+import { SuppliersTable } from "../../components/SuppliersTable/SuppliersTable";
+import Modal from "../../components/Modal/Modal";
+import AddNewSupplier from "../../components/Modal/AddNewSupplier /AddNewSupplier";
 
-const PaginationDot = ({ onClick,isActive }) => (
-
+const PaginationDot = ({ onClick, isActive }) => (
   <SvgDot onClick={onClick} $isActive={isActive}>
- 
+
   </SvgDot>
 );
 
- const AllProductsPage = () => {
+ const Suppliers = () => {
   const dispatch = useDispatch();
-  const productsList = useSelector(products);
+  const loggedIn = useSelector(selectIsLoggedIn);
   const [filterValue, setFilterValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,16 +41,17 @@ const PaginationDot = ({ onClick,isActive }) => (
     setFilterValue(e.target.value);
   };
   useEffect(() => {
-    // if (loggedIn) {
-      dispatch(productsGet({ page: 1, name: "" }));
-    // }
-  }, [dispatch,filterValue]);
+    if (loggedIn) {
+      dispatch(suppliersGet({ page: 1, name: "" }));
+    }
+  }, [dispatch, loggedIn]);
 
+  const suppliersList = useSelector(suppliers);
   const totalPageCount = useSelector(totalPages);
   const currentPage = useSelector(page);
 
   const handlePageChange = (newPage) => {
-    dispatch(productsGet({ page: newPage, name: filterValue || "" }));
+    dispatch(suppliersGet({ page: newPage, name: filterValue || "" }));
   };
 
   const renderPaginationDots = () => {
@@ -58,26 +61,22 @@ const PaginationDot = ({ onClick,isActive }) => (
         <PaginationDot
           key={i}
           onClick={() => handlePageChange(i)}
-          isActive={i  === +currentPage}
+          isActive={i === +currentPage}
         />
       );
     }
     return dots;
   };
   const handleFilterSubmit = () => {
-    dispatch(productsGet({ page: 1, name: filterValue }));
+    dispatch(suppliersGet({ page: 1, name: filterValue }));
   };
 
-  const handleAddButtonClick = () => {
-    setIsModalOpen(true);
-  };
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   return (
     <>
-      <WrapProducts>
+      <WrapSuppliers>
         <BtnWrap>
           <FilterWrap>
             <Input
@@ -93,25 +92,19 @@ const PaginationDot = ({ onClick,isActive }) => (
               Filter
             </Button>
           </FilterWrap>
-          <BtnAdd onClick={handleAddButtonClick}>
-            <DivPlus>
-              <SvgPlus>
-                <use href={sprite + "#icon-plus"}></use>
-              </SvgPlus>
-            </DivPlus>
-            Add a new product
-          </BtnAdd>
+
+          <BtnAdd onClick={()=>setIsModalOpen(true)}>Add a new suppliers</BtnAdd>
         </BtnWrap>
-        <ProductsTable data={productsList} />
+        <SuppliersTable data={suppliersList} />
         <Pagination>{renderPaginationDots()}</Pagination>
         {isModalOpen && (
           <Modal onClose={closeModal} isOpen={isModalOpen}>
-            <AddNewProduct  onClose={closeModal}/>
+            <AddNewSupplier  onClose={closeModal}/>
           </Modal>
         )}
-      </WrapProducts>
+      </WrapSuppliers>
     </>
   );
 };
 
-export default AllProductsPage;
+export default Suppliers;

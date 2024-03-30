@@ -66,7 +66,7 @@ const listsSlice = createSlice({
       .addCase(customerGet.pending, handlePending)
       .addCase(customerGet.rejected, handleRejected)
       .addCase(customerGet.fulfilled, (state, action) => {
-        state.customers = action.payload.customers;
+        state.customers = action.payload.customer;
         state.totalPages = action.payload.totalPages;
         state.perPage = action.payload.pageSize;
         state.isLoggedIn = true;
@@ -82,7 +82,7 @@ const listsSlice = createSlice({
       .addCase(ordersGet.pending, handlePending)
       .addCase(ordersGet.rejected, handleRejected)
       .addCase(ordersGet.fulfilled, (state, action) => {
-        state.orders = action.payload.orders;
+        state.orders = action.payload.order;
         state.page = action.payload.currentPage;
         state.totalPages = action.payload.totalPages;
         state.perPage = action.payload.pageSize;
@@ -136,7 +136,7 @@ const listsSlice = createSlice({
       .addCase(suppliersGet.pending, handlePending)
       .addCase(suppliersGet.rejected, handleRejected)
       .addCase(suppliersGet.fulfilled, (state, action) => {
-        state.suppliers = action.payload.suppliers;
+        state.suppliers = action.payload.supplier;
         state.page = action.payload.currentPage;
         state.totalPages = action.payload.totalPages;
         state.perPage = action.payload.pageSize;
@@ -147,7 +147,7 @@ const listsSlice = createSlice({
       .addCase(suppliersAdd.rejected, handleRejected)
       .addCase(suppliersAdd.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.suppliers = [action.payload, ...state.suppliers];
+        state.suppliers = [action.payload, ...state.supplier];
         state.supplierId = action.payload;
         state.isLoggedIn = true;
       })

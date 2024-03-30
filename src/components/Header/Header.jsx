@@ -1,6 +1,7 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from '../../redux/auth/operations';
 import {
-  HeaderContainer,
-  Navigation,
   BtnMenu,
   LogOutWrap,
   SidebarWrap,
@@ -8,27 +9,47 @@ import {
   SvgMenu,
   Wrap,
   WrapperHeader,
+  SvgWrapLogOut,
+  LogOutBtn,
+  SvgLogOut,
+  LogoImg,
+  LogoLink,
+  LogoLinkId,
+  LogoPicture,
+  LogoText,
+  Text,
+  TextWrap,
 } from './Header.styled';
 import { useState } from "react";
 import sprite from '../../assets/sprite.svg'
-import { selectIsLoggedIn,selectUserName} from '../../redux/auth/authSelectors';
+import { selectIsLoggedIn,selectUserEmail} from '../../redux/auth/authSelectors';
 
 import { useSelector } from 'react-redux';
 import Sidebar from "../Sidebar/Sidebar";
+import logopng from '../../assets/Mask group (1).png'
 
 export const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await dispatch(signOut());
+      navigate('/login');
+    } catch (error) {
+      console.error('Failed to sign out:', error);
+    }
+  };
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const name = useSelector(selectUserName);
+  const email = useSelector(selectUserEmail);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
+  let location  = window.location.href.slice(38,window.location.href.length)
+  console.log(isLoggedIn)
   return (
-    <HeaderContainer>
-      <Navigation>
-        {isLoggedIn ? 
-           <div>
+<>
            <WrapperHeader>
              <Wrap>
                <BtnMenu onClick={handleMenuToggle}>
@@ -38,26 +59,69 @@ export const Header = () => {
                    </SvgClose>
                  ) : (
                    <SvgMenu>
-                     <use href={sprite + "#icon-menu"}></use>
+                     <use href={sprite + "#icon-iconamoon_menu-burger-horizontal-duotone"}></use>
                    </SvgMenu>
                  )}
                </BtnMenu>
+               <>
+      {isLoggedIn ? (
+        <LogoLinkId to="/">
+          <LogoPicture>
+            <source
+              srcSet={logopng}
+              type="image/webp"
+              media="(min-resolution: 2dppx)"
+            />
+
+            <LogoImg src={logopng} alt="User" />
+          </LogoPicture>
+          <div>
+            <LogoText>Medicine Store</LogoText>
+            <TextWrap>
+              <Text>
+                {location === "dashboard" && "Dashboard"}
+                {location === "orders" && "All orders"}
+                {location === "customers" && "All customers"}
+                {location === "suppliers" && "All suppliers"}
+                {location === "products" && "All products"}
+              </Text>
+              <Text>{email}</Text>
+            </TextWrap>
+          </div>
+        </LogoLinkId>
+      ) : (
+        <LogoLink to="/">
+          <LogoPicture>
+          <source
+              srcSet={logopng}
+              type="image/webp"
+              media="(min-resolution: 2dppx)"
+            />
+
+            <LogoImg src={logopng} alt="User" />
+          </LogoPicture>
+          <LogoText>E-Pharmacy</LogoText>
+        </LogoLink>
+      )}
+    </>
              </Wrap>
              <LogOutWrap>
+             <SvgWrapLogOut>
+            <LogOutBtn onClick={handleLogout}>
+              <SvgLogOut>
+                <use href={sprite + "#icon-logout"}></use>
+              </SvgLogOut>
+            </LogOutBtn>
+          </SvgWrapLogOut>
              </LogOutWrap>
            </WrapperHeader>
            <SidebarWrap>
              <Sidebar />
            </SidebarWrap>
            {isMenuOpen && <Sidebar open={isMenuOpen} />}
-         </div>
-        : <> 
-          {/* <svg>
-        <use href={sprite + "#icon-logo"}></use>
-      </svg> */}
-       <p>E-Pharmacy</p></>}
+         </>
 
-      </Navigation>
-    </HeaderContainer>
+
+
   );
 };

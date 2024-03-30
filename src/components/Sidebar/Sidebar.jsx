@@ -15,6 +15,7 @@ import {
   NavItem,
   SvgNav,
 } from './Sidebar.styled';
+import sprite from '../../assets/sprite.svg'
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -35,29 +36,30 @@ const Sidebar = () => {
             <NavDiv>
               <NavItem to="/dashboard" replace>
                 <SvgNav>
-                  {/* <use href={sprite + '#'}></use> */}
+                  <use href={sprite + '#icon-ic_round-dashboard'}></use>
                 </SvgNav>
               </NavItem>
               <NavItem to="/orders" replace>
                 <SvgNav>
-                  {/* <use href={sprite + '#'}></use> */}
+                  <use href={sprite + '#icon-ic_round-shopping-cart'}></use>
                 </SvgNav>
               </NavItem>
               <NavItem to="/products" replace>
                 <SvgNav>
-                  {/* <use href={sprite + '#'}></use> */}
-                </SvgNav>
-              </NavItem>
-              <NavItem to="/customers" replace>
-                <SvgNav>
-                  {/* <use href={sprite + '#'}></use> */}
+                  <use href={sprite + '#icon-mingcute_flask-fill'}></use>
                 </SvgNav>
               </NavItem>
               <NavItem to="/suppliers" replace>
                 <SvgNav>
-                  {/* <use href={sprite + '#'}></use> */}
+                  <use href={sprite + '#icon-mdi_local-pharmacy'}></use>
                 </SvgNav>
               </NavItem>
+              <NavItem to="/customers" replace>
+                <SvgNav>
+                  <use href={sprite + '#icon-mdi_users'}></use>
+                </SvgNav>
+              </NavItem>
+              
             </NavDiv>
           </StyledNav>
         </SidebarWrap>
@@ -65,7 +67,7 @@ const Sidebar = () => {
           <SvgWrapLogOut>
             <LogOutBtn onClick={handleLogout}>
               <SvgLogOut>
-                {/* <use href={sprite + "#"}></use> */}
+                <use href={sprite + "#icon-logout"}></use>
               </SvgLogOut>
             </LogOutBtn>
           </SvgWrapLogOut>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WrapOrders = styled.div`
+export const WrapSuppliers = styled.div`
   display: flex;
   padding: 40px 20px;
   background: #f7f8fa;
@@ -9,7 +9,7 @@ export const WrapOrders = styled.div`
     padding: 50px 32px;
   }
   flex-direction: column;
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width:1440px) {
     padding: 75px 120px;
   }
 `;
@@ -106,10 +106,42 @@ export const SvgFilter = styled.svg`
   fill: transparent;
 `;
 
+export const BtnAdd = styled.button`
+  background: transparent;
+  display: flex;
+  padding: 13px 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  border: 1px solid rgba(89, 177, 122, 0.5);
+
+  color: #1d1e21;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28;
+  transition: all 250ms linear;
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+  }
+`;
+
 export const FilterWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 14px;
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
+  @media screen and (min-width:1440px) {
+    width: calc((100vw - 265px));
+  }
 `;
