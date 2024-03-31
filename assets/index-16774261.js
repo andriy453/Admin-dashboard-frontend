@@ -247,7 +247,7 @@ Notiflix needs to be appended to the "<`+R+'>" element, but you called it before
   display: flex;
   flex-direction: row;
   margin-top: 4px;
-`,mt="/Admin-dashboard/assets/sprite-af13ce98.svg",R4=e=>e.auth.user.email,Xs=e=>e.auth.isLoggedIn,T4=e=>e.auth.token,P4=$.div`
+`,mt="/assets/sprite-af13ce98.svg",R4=e=>e.auth.user.email,Xs=e=>e.auth.isLoggedIn,T4=e=>e.auth.token,P4=$.div`
   display: flex;
   align-items: center;
   width: 78px;
@@ -528,7 +528,7 @@ attempted value: ${a}
   @media screen and (min-width: 768px) {
     width: 500px;
   }
-`;function KI(){const e=qs({email:qr().email("Invalid email format").matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,"Invalid Email format").required("Email is required"),password:qr()}),t=Ln(),n={email:"",password:"",showPassword:!1},r=async i=>{t(tu({email:i.email,password:i.password}))};return m.jsx(UI,{children:m.jsx(Jc,{initialValues:n,validationSchema:e,onSubmit:r,children:m.jsxs(VI,{children:[m.jsxs(Fv,{children:[m.jsx(_v,{type:"email",name:"email",placeholder:"Email address"}),m.jsx(zv,{}),m.jsx(xn,{name:"email",children:i=>m.jsx($v,{children:i})})]}),m.jsxs(Fv,{children:[m.jsx(_v,{className:"no-bottom-padding",name:"password",placeholder:"Password",type:"password"}),m.jsx(zv,{}),m.jsx(xn,{name:"password",children:i=>m.jsx($v,{children:i})})]}),m.jsx(GI,{children:m.jsx(XI,{type:"submit",children:"Log in"})})]})})})}const Lv="/Admin-dashboard/assets/tablets-mobile1x-7dfbf492.png",Mv="/Admin-dashboard/assets/tablets-tablet2x-93de019f.png",qI="/Admin-dashboard/assets/tablets-tablet1x-f2e05267.png",QI="/Admin-dashboard/assets/tablets-desktop1x-a7aaee13.png",YI="/Admin-dashboard/assets/tablets-desktop2x-35647bd2.png",Dv="/Admin-dashboard/assets/login-becraund-c25f5e56.png",JI=p4`
+`;function KI(){const e=qs({email:qr().email("Invalid email format").matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,"Invalid Email format").required("Email is required"),password:qr()}),t=Ln(),n={email:"",password:"",showPassword:!1},r=async i=>{t(tu({email:i.email,password:i.password}))};return m.jsx(UI,{children:m.jsx(Jc,{initialValues:n,validationSchema:e,onSubmit:r,children:m.jsxs(VI,{children:[m.jsxs(Fv,{children:[m.jsx(_v,{type:"email",name:"email",placeholder:"Email address"}),m.jsx(zv,{}),m.jsx(xn,{name:"email",children:i=>m.jsx($v,{children:i})})]}),m.jsxs(Fv,{children:[m.jsx(_v,{className:"no-bottom-padding",name:"password",placeholder:"Password",type:"password"}),m.jsx(zv,{}),m.jsx(xn,{name:"password",children:i=>m.jsx($v,{children:i})})]}),m.jsx(GI,{children:m.jsx(XI,{type:"submit",children:"Log in"})})]})})})}const Lv="/assets/tablets-mobile1x-7dfbf492.png",Mv="/assets/tablets-tablet2x-93de019f.png",qI="/assets/tablets-tablet1x-f2e05267.png",QI="/assets/tablets-desktop1x-a7aaee13.png",YI="/assets/tablets-desktop2x-35647bd2.png",Dv="/assets/login-becraund-c25f5e56.png",JI=p4`
 body {
  padding:0;
   font-family: Inter;
