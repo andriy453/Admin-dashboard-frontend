@@ -52,8 +52,8 @@ export const Header = () => {
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
-  let location = window.location.href.slice(47, window.location.href.length);
-  console.log(isLoggedIn);
+  let location = window.location.href.slice(53, window.location.href.length);
+
   useEffect(() => {
     if (isMenuOpen === true) {
       document.body.style.overflow = 'hidden';
@@ -61,7 +61,6 @@ export const Header = () => {
       document.body.style.overflow = 'unset';
     }
   }, [isMenuOpen]);
-  console.log(location)
   return (
     <>
       <WrapperHeader $isActive={isLoggedIn}>
