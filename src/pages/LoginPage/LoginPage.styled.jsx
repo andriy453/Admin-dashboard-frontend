@@ -4,22 +4,17 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
-  padding-top: 148px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 138px 0;
 
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: flex-start;
-    padding-top: 204px;
-    padding-right: 32px;
+    padding: 174px 0;
 
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 1440px) {
       flex-direction: row-reverse;
       justify-content: space-between;
-      padding-top: 226px;
-      padding-right: 253px;
-      padding-left: 100px;
+      padding: 200px 0;
     }
   }
 `;

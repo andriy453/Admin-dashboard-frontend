@@ -1,27 +1,26 @@
 import { createPortal } from 'react-dom';
-import { Backdrop ,StyledModal,StyledCloseButton,Svg} from './Modal.stuled';
+import { Backdrop, StyledModal, StyledCloseButton, Svg } from './Modal.stuled';
 import { useEffect, useLayoutEffect } from 'react';
-import sprite from '../../assets/sprite.svg'
+import sprite from '../../assets/sprite.svg';
 
-
-function Modal({ children,onClose,}) {
+function Modal({ children, onClose }) {
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-   window.addEventListener('keydown', keyDown);
-    
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', keyDown);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useLayoutEffect(() => {
     return () => {
-        document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', keyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const keyDown = (e) => {
     if (e.code === 'Escape') {
-        document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
       element.classList.remove('modal-open');
       onClose(false);
     }
@@ -29,7 +28,7 @@ function Modal({ children,onClose,}) {
   let element = document.querySelector('body');
   const onOverlayClose = (e) => {
     if (e.currentTarget === e.target) {
-        document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
       element.classList.remove('modal-open');
       onClose(false);
     }
@@ -39,7 +38,7 @@ function Modal({ children,onClose,}) {
       <StyledModal>
         <StyledCloseButton type="button" onClick={onClose}>
           <Svg>
-            <use href={sprite + "#icon-x"} />
+            <use href={sprite + '#icon-x'} />
           </Svg>
         </StyledCloseButton>
         {children}

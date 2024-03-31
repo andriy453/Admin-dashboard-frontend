@@ -6,9 +6,13 @@ import tabletsTablet1x from '../../assets/tablets-tablet1x.png';
 import tabletsTablet2x from '../../assets/tablets-tablet2x.png';
 import tabletsDesktop1x from '../../assets/tablets-desktop1x.png';
 import tabletDesktop2x from '../../assets/tablets-desktop2x.png';
+import { GlobalStyles } from "../../pages/LoginPage/GlobalStyles.styled";
 const LoginPage = () => {
   return (
+<>
+<GlobalStyles />
     <Container>
+      
             <LoginForm />
       <Wrapperimg>
       <Title>
@@ -35,9 +39,8 @@ const LoginPage = () => {
         <Img src={tabletsMobile1x} alt="User" />
       </Picture>
 </Wrapperimg>
-
-
     </Container>
+    </>
   );
 };
 

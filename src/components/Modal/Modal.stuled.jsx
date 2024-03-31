@@ -13,7 +13,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const StyledModal = styled.div`

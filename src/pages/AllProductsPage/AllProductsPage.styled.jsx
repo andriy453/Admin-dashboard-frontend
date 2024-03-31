@@ -14,6 +14,7 @@ export const WrapProducts = styled.div`
   }
 `;
 
+
 export const SvgDot = styled.div`
   width: 10px;
   height: 10px;

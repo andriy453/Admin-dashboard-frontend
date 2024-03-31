@@ -18,7 +18,8 @@ export const WrapperHeader = styled.div`
   position: relative;
 
   padding: 17px 0px 17px 72px;
-  border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+  border-bottom: ${(props) => props.$isActive  ? "1px solid rgba(29, 30, 33, 0.1)" : "none" } ; 
+
 
   background: #f7f8fa;
   
@@ -27,7 +28,7 @@ export const WrapperHeader = styled.div`
   }
   @media screen and (min-width: 1440px) {
     padding: 15px 40px 15px 20px;
-    z-index: 1;
+    z-index: 3;
   }
 `;
 

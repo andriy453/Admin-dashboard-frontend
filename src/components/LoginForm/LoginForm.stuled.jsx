@@ -1,136 +1,139 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Field, Form } from "formik";
+import styled from "styled-components";;
 
-export const Form = styled.form`
+export const WrapperForm = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-  max-width: 628px;
+export const StyledFormAuth = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media screen and (min-width: 768px) {
+    align-items: start;
   }
 `;
 
-export const Title = styled.h1`
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -0.6px;
-  margin-bottom: 16px;
-  @media screen and (min-width: 768px) {
-    font-size: 40px;
-    line-height: 1.2;
-    letter-spacing: -0.8px;
-    margin-bottom: 20px;
-  }
+export const StyledWrapInputAuth = styled.div`
+  position: relative;
 `;
 
-export const Text = styled.p`
-  color: rgba(18, 20, 23, 0.8);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  margin-bottom: 40px;
-  @media screen and (max-width: 374px) {
-    font-size: 14px;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-    margin-bottom: 32px;
-  }
-`;
-export const TextRegister = styled.p`
-  color: rgba(18, 20, 23, 0.8);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  @media screen and (max-width: 374px) {
-    font-size: 14px;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 20px;
-    margin-bottom: 32px;
-  }
-`;
-
-export const Input = styled.input`
-  border: 1px solid rgba(29, 30, 33, 0.1);
+export const StyledInputAuth = styled(Field)`
   border-radius: 60px;
-  padding: 13px 18px 13px 18px;
-  background-color: rgb(255, 255, 255);
-
-  transition: border 300ms;
-  color: rgba(3, 66, 255, 0.4);
-  width: 100%;
-
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  ::placeholder {
-    color: rgba(3, 66, 255, 0.4);
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  background: transparent;
+  margin-bottom: 14px;
+  &.no-bottom-padding {
+    margin-bottom: 0;
+  }
+  outline: none;
+  transition: all 250ms linear;
+  background: transparent;
+  color: #1d1e21;
+  width: calc(100vw - 48px);
+  max-width: 500px;
+  line-height: 1.5;
+  padding: 16px 40px 16px 18px;
+  &::placeholder {
+    color: rgba(29, 30, 33, 0.4);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
   }
   &:hover,
   &:focus {
-    border: 1px solid var(--grean);
+    border: 1px solid #59b17a;
     outline: none;
     opacity: 1;
-    transition:
-      outline 250ms linear,
-      opacity 250ms linear;
+    transition: outline 250ms linear, opacity 250ms linear;
   }
-
-  &.is-invalid {
-    border-color: red;
+  @media screen and (min-width: 768px) {
+    width: 500px;
   }
 `;
 
-export const Button = styled.button`
-  border: none;
-  border-radius: 60px;
-  background-color: var(--grean);
-  padding: 13px 110px;
-  color: var(--white);
-
-
-  width: 100%;
-
+export const StyledLabelAuth = styled.span`
+  position: absolute;
+  top: 20px;
+  left: 0;
+  font-weight: 700;
   font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  letter-spacing: 0%;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: black;
+  pointer-events: none;
+  transition: all 250ms linear;
+`;
 
-  transition: background 300ms;
+export const StyledErrorAuth = styled.div`
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  font-size: 10px;
+  font-weight: 400;
+  font-family: Inter;
+  color: #59b17a;
+  transition: all 250ms linear;
+`;
+
+export const AuthFormPasswordIcon = styled.span`
+  position: absolute;
+  bottom: 10px;
+  right: 18px;
+  cursor: pointer;
+`;
+
+export const StyledEyeIcon = styled.svg`
+  transition: color 0.3s;
+  width: 20px;
+  height: 20px;
+  stroke: rgba(18, 20, 23, 1);
+  fill: transparent;
+`;
+
+export const StyledEyeIconVis = styled.svg`
+  transition: color 0.3s;
+  width: 20px;
+  height: 20px;
+  stroke: rgba(18, 20, 23, 1);
+  fill: transparent;
+`;
+
+export const StyledWrapAuthBtn = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+export const StyledBtnAuthAccent = styled.button`
+  display: flex;
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28;
+  border-radius: 60px;
+  background: #59b17a;
+  padding: 13px 18px;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  width: calc(100vw - 40px);
+  transition: all 250ms linear;
 
   &:hover,
-  :focus {
-    background-color: var(--grean-hover);
+  &:focus {
+    background: #a5c0b8;
   }
-
   @media screen and (min-width: 768px) {
-    font-size: 18px;
+    width: 500px;
   }
-`;
-
-
-export const Validation = styled.p`
-  color: #d80027;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.12px;
-  margin-top: 4px;
-`;
-
-export const WraperDiv = styled.div`
-  margin-bottom: 40px;
-  position: relative;
-`;
-export const ConteinerInp = styled.div`
-  margin-bottom: 14px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 18px;
-  }
-`;
-
-export const Erorr = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0px 4px;
 `;
