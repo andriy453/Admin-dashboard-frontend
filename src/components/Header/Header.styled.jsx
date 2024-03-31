@@ -165,13 +165,21 @@ export const LogoText = styled.p`
 `;
 
 export const LogoPicture = styled.picture`
+  width: 32px;
+  height: 32px;
+    @media screen and (min-width: 768px) {
   width: 44px;
   height: 44px;
+    }
 `;
 
 export const LogoImg = styled.img`
+  width: 32px;
+  height: 32px;
+      @media screen and (min-width: 768px) {
   width: 44px;
   height: 44px;
+    }
 `;
 
 export const Text = styled.p`

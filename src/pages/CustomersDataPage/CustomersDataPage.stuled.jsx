@@ -74,6 +74,10 @@ export const Input = styled.input`
   &.active {
     border: 1px solid #59b17a;
   }
+  width: 215px;
+    @media screen and (min-width: 768px) {
+width: 224px;
+    }
 `;
 
 export const Button = styled.button`
@@ -110,6 +114,9 @@ export const FilterWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
+        gap: 8px;
+    @media screen and (min-width: 768px) {
+        gap: 16px;
+    }
   margin-bottom: 20px;
 `;

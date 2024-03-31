@@ -123,11 +123,7 @@ export const productsIdEdit = createAsyncThunk(
   async ({id,name,stock,price,suppliers,category},   { rejectWithValue }) => {
     try {
       console.log(id)
-      const { data } = await instance.put(`/api/products/${id}`,{ id,  name: name,
-        stock: stock,
-        price: price,
-        suppliers: suppliers,
-        category: category,});
+      const { data } = await instance.put(`/api/products/${id}`,{name,stock,price,suppliers,category,});
 
       return data;
     } catch (error) {
@@ -197,9 +193,9 @@ export const suppliersIdGet = createAsyncThunk(
 
 export const suppliersIdEdit = createAsyncThunk(
   "suppliers/edit",
-  async ({ supplierId, body }, { rejectWithValue }) => {
+  async ({ id, name,suppliers,amount,address,status,date}, { rejectWithValue }) => {
     try {
-      const { data } = await instance.put(`/api/suppliers/:${supplierId}`, body);
+      const { data } = await instance.put(`/api/suppliers/${id}`, {name,suppliers,amount,address,status,date});
 
       return data;
     } catch (error) {

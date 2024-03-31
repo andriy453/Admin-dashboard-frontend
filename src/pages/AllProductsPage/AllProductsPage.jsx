@@ -42,7 +42,7 @@ const PaginationDot = ({ onClick,isActive }) => (
     // if (loggedIn) {
       dispatch(productsGet({ page: 1, name: "" }));
     // }
-  }, [dispatch,filterValue]);
+  }, [dispatch,productsList.length]);
 
   const totalPageCount = useSelector(totalPages);
   const currentPage = useSelector(page);

@@ -75,17 +75,14 @@ export const Input = styled.input`
   &.active {
     border: 1px solid #59b17a;
   }
-  margin-bottom:18px;
-  width: 100%;
+width: 215px;
     @media screen and (min-width: 768px) {
-        margin-bottom:0px;
-        width: none;
+width: 224px;
     }
 `;
 
 export const Button = styled.button`
-display: none;
-  @media screen and (min-width: 768px) {
+
     display: block;
   padding: 13px 30px;
   border-radius: 60px;
@@ -107,7 +104,7 @@ display: none;
   &:focus {
     opacity: 0.4;
   }
-  }
+  
 
 `;
 
@@ -143,7 +140,11 @@ export const FilterWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
+        gap: 8px;
+    @media screen and (min-width: 768px) {
+        gap: 16px;
+    }
+      margin-bottom:18px;
 `;
 
 export const BtnWrap = styled.div`

@@ -28,33 +28,36 @@ const schema = yup.object({
     .string().required('suppliers is required'),
 });
 
-const initialValues = {
-  name: '',
-  stock: '',
-  price: '',
-  category: '',
-  suppliers: '',
-};
-const categoriesArr = [
-  'Medicine',
-  'Heart',
-  'Head',
-  'Hand',
-  'Leg',
-  'Dental Care',
-  'Skin Care',
-];
 
-const EditModal = ({ onClose,id }) => {
+
+const EditModal = ({ onClose,data }) => {
+  const initialValues = {
+    name: data ? data.original.name : '',
+    stock:  data ? data.original.stock : '',
+    price:  data ? data.original.price  : '',
+    category:    data ? data.original.category : '',
+    suppliers: data ? data.original.suppliers : '',
+  };
+  const categoriesArr = [
+    'Medicine',
+    'Heart',
+    'Head',
+    'Hand',
+    'Leg',
+    'Dental Care',
+    'Skin Care',
+  ];
   const dispatch = useDispatch();
+  console.log(data.original
+    )
 
-  const [selectCategories, setCategories] = useState('');
+  const [selectCategories, setCategories] = useState(data.original.category);
 
   const onSubmit = (values, { resetForm }) => {
     dispatch(
         productsIdEdit(
             {
-                id:id,
+            id: data.original._id,
             name: values.name,
             stock: values.stock,
             price: values.price,
@@ -120,7 +123,7 @@ const EditModal = ({ onClose,id }) => {
               </label>
             </WrapInputModal>
             <Dropdown
-              value="Categories"
+              value={data.original.category}
               set={setCategories}
               selectedOption={selectCategories}
               arr={categoriesArr}

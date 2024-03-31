@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const WrapSuppliers = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const WrapSuppliers = styled.div`
     padding: 50px 32px;
   }
   flex-direction: column;
-  @media screen and (min-width:1440px) {
+  @media screen and (min-width: 1440px) {
     padding: 75px 120px;
   }
 `;
@@ -17,14 +17,13 @@ export const WrapSuppliers = styled.div`
 export const SvgDot = styled.div`
   width: 10px;
   height: 10px;
-  background-color:${(props) => props.$isActive ?'rgba(89, 177, 122, 1)' :   '#ffffff'};
-  border-radius:50%;
-
-
+  background-color: ${(props) =>
+    props.$isActive ? 'rgba(89, 177, 122, 1)' : '#ffffff'};
+  border-radius: 50%;
 
   &:hover,
   &:focus,
-  &.active  {
+  &.active {
     background-color: rgba(89, 177, 122, 1);
     width: 12px;
     height: 12px;
@@ -74,6 +73,10 @@ export const Input = styled.input`
   &.active {
     border: 1px solid #59b17a;
   }
+  width: 215px;
+    @media screen and (min-width: 768px) {
+width: 224px;
+    }
 `;
 
 export const Button = styled.button`
@@ -133,15 +136,23 @@ export const FilterWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
+  gap: 8px;
+    @media screen and (min-width: 768px) {
+        gap: 16px;
+    }
 `;
 
 export const BtnWrap = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 20px;
-  @media screen and (min-width:1440px) {
+  gap: 16px;
+  @media screen and (min-width: 768px) {
+      align-items: center;
+    flex-direction: row;
+  }
+  @media screen and (min-width: 1440px) {
     width: calc((100vw - 265px));
   }
 `;

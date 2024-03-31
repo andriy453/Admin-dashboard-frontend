@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo,useState } from "react";
 import { useTable } from "react-table/dist/react-table.development";
 import sprite from "../../assets/sprite.svg";
 import { nanoid } from "nanoid";
@@ -14,8 +14,16 @@ import {
   Title,
   Tr,
 } from "./SuppliersTable.stuled";
+import Modal from "../Modal/Modal";
+import EditSuppliers from "../Modal/EditSuppliers/EditSuppliers";
 
 export const SuppliersTable = ({ data }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [idSuppires, setIdSuppires] = useState('');
+  const  hendleEditClick  =(row) =>{
+    setIsModalOpen(true) 
+    setIdSuppires(row)
+  }
   const columnsRecommend = useMemo(
     () => [
       {
@@ -37,7 +45,7 @@ export const SuppliersTable = ({ data }) => {
       {
         Header: "Ammount",
         accessor: "amount",
-        Cell: ({ value }) => <span>{value.slice(1)}</span>,
+        Cell: ({ value }) => <span>{value}</span>,
       },
       {
         Header: "Status",
@@ -82,8 +90,8 @@ export const SuppliersTable = ({ data }) => {
               justifyContent: "center",
             }}
           >
-            <BtnEdit>
-              <SvgEdit>
+            <BtnEdit onClick={()=>hendleEditClick(row)}>
+              <SvgEdit >
                 <use href={sprite + "#icon-pen"}></use>
               </SvgEdit>
               Edit
@@ -128,6 +136,11 @@ export const SuppliersTable = ({ data }) => {
           </tbody>
         </Table>
       </TableWrap>
+      {isModalOpen && (
+          <Modal onClose={()=>    setIsModalOpen(false)} isOpen={isModalOpen}>
+            <EditSuppliers  onClose={()=>    setIsModalOpen(false)} data={idSuppires}/>
+          </Modal>
+        )}
     </>
   );
 };

@@ -66,7 +66,7 @@ import EditModal from "../Modal/EditModal/EditModal";
             }}
           >
             <BtnEdit>
-              <SvgEdit onClick={()=>hendleEditClick(row.original._id) }>
+              <SvgEdit onClick={()=>hendleEditClick(row) }>
                 <use href={sprite + "#icon-pen"}></use>
               </SvgEdit>
             </BtnEdit>
@@ -79,7 +79,7 @@ import EditModal from "../Modal/EditModal/EditModal";
         ),
       },
     ],
-    []
+    [dispatch,]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -117,7 +117,7 @@ import EditModal from "../Modal/EditModal/EditModal";
       </TableWrap>
       {isModalOpen && (
           <Modal onClose={()=>    setIsModalOpen(false)} isOpen={isModalOpen}>
-            <EditModal  onClose={()=>    setIsModalOpen(false)} id={idProduct}/>
+            <EditModal  onClose={()=>    setIsModalOpen(false)} data={idProduct}/>
           </Modal>
         )}
     </>
