@@ -38,8 +38,7 @@ This page displays data about the shop's customers. Users can filter customers b
 
 
 ## Contents
-- [Review](#review)
-- [Content](#content)
+- [Review](#Overview)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Useful links](#useful-links)
@@ -56,7 +55,8 @@ This page displays data about the shop's customers. Users can filter customers b
   - ![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white)
   - ![Redux](https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
   - ![Styled Components](https://img.shields.io/badge/styled_components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white)
-  - ![Vite] (https://skillicons.dev/icons?i=vite)
+  - ![Vite](https://skillicons.dev/icons?i=vite)
+  - ***BackEnd***
   - ![BackEnd](https://skillicons.dev/icons?i=nodejs,express,mongodb,postman)
 
 
