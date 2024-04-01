@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { page, products, totalPages } from "../../redux/lists/listsSelector";
+import { page, products, totalPages,totalProduct } from "../../redux/lists/listsSelector";
 import { productsGet } from "../../redux/lists/operations";
 
 import {
@@ -32,6 +32,8 @@ const PaginationDot = ({ onClick,isActive }) => (
  const AllProductsPage = () => {
   const dispatch = useDispatch();
   const productsList = useSelector(products);
+  const TotalProduct = useSelector(totalProduct);
+  
   const [filterValue, setFilterValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -42,7 +44,7 @@ const PaginationDot = ({ onClick,isActive }) => (
     // if (loggedIn) {
       dispatch(productsGet({ page: 1, name: "" }));
     // }
-  }, [dispatch,productsList.length]);
+  }, [dispatch,TotalProduct]);
 
   const totalPageCount = useSelector(totalPages);
   const currentPage = useSelector(page);

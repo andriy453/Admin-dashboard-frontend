@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 function PrivateRoute({component: Component, redirectTo   }) {
   const token =  useSelector(selectToken)
-  console.log(token)
   return token ?  Component : <Navigate to={redirectTo} />;
 }
 

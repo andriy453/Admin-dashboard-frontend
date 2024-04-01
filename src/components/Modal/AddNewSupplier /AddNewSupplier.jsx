@@ -20,6 +20,7 @@ const schema = yup.object({
   Company: yup.string().required('Company is required'),
   Ammount: yup.number().required('Ammount is required'),
   Address: yup.string().required('Address is required'),
+  date: yup.date().required('date is required'),
 });
 
 const initialValues = {
@@ -44,7 +45,7 @@ const AddNewSupplier = ({ onClose }) => {
         suppliers: values.Company,
         amount: values.Ammount,
         address: values.Address,
-        status: selectCategories,
+        status: selectCategories === '' ? "Active" : selectCategories,
         date: values.date,
       })
     );

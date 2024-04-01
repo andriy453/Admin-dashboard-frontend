@@ -96,7 +96,6 @@ export const currentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
     const accessToken = localStorage.getItem('accessToken');
-console.log(accessToken)
     if (!accessToken) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }

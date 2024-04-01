@@ -122,7 +122,6 @@ export const productsIdEdit = createAsyncThunk(
   "products/edit",
   async ({id,name,stock,price,suppliers,category},   { rejectWithValue }) => {
     try {
-      console.log(id)
       const { data } = await instance.put(`/api/products/${id}`,{name,stock,price,suppliers,category,});
 
       return data;
@@ -137,7 +136,7 @@ export const productsIdDelete = createAsyncThunk(
   "products/delete",
   async (productId, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post(`/api/products/${productId}`);
+      const { data } = await instance.delete(`/api/products/${productId}`);
 
       return data;
     } catch (error) {

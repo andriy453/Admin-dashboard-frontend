@@ -12,6 +12,8 @@ export const orders = (state) => state.lists.orders;
 
 export const products = (state) => state.lists.products;
 
+export const totalProduct = (state) => state.lists.totalProduct;
+
 export const productId = (state) => state.lists.productId;
 
 export const suppliers = (state) => state.lists.suppliers;

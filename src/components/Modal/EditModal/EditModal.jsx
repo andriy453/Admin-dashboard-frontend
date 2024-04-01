@@ -48,8 +48,6 @@ const EditModal = ({ onClose,data }) => {
     'Skin Care',
   ];
   const dispatch = useDispatch();
-  console.log(data.original
-    )
 
   const [selectCategories, setCategories] = useState(data.original.category);
 

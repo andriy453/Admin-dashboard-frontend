@@ -33,7 +33,6 @@ const EditSuppliers = ({ onClose, data }) => {
     Address: data ? data.original.address : '',
     date: data ? data.original.date : '',
   };
-  console.log(data.original);
   const categoriesArr = ['Active', 'Deactive'];
 
   const dispatch = useDispatch();

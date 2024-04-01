@@ -37,6 +37,7 @@ const initialState = {
   supplierId: [],
   page: null,
   totalPages: null,
+  totalProduct: null,
   perPage: null,
   isRefreshing: false,
   isLoggedIn: false,
@@ -96,15 +97,14 @@ const listsSlice = createSlice({
         state.page = action.payload.currentPage;
         state.totalPages = action.payload.totalPages;
         state.perPage = action.payload.pageSize;
+        state.totalProduct = action.payload.totalProducts;
         state.isLoggedIn = true;
         state.isLoading = false;
       })
       .addCase(productsAdd.pending, handlePending)
       .addCase(productsAdd.rejected, handleRejected)
-      .addCase(productsAdd.fulfilled, (state, action) => {
+      .addCase(productsAdd.fulfilled, (state) => {
         state.isLoading = false;
-        state.products = [action.payload, ...state.products];
-        state.productId = action.payload;
         state.isLoggedIn = true;
       })
       .addCase(productsIdGet.pending, handlePending)
@@ -130,6 +130,7 @@ const listsSlice = createSlice({
         state.products = state.products.filter(
           (product) => product._id !== action.payload
         );
+        state.totalProduct = state.totalProduct -1 ;
         state.isLoading = false;
         state.isLoggedIn = true;
       })
